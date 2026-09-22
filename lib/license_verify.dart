@@ -59,7 +59,7 @@ LicenseResult verifyKey(String rawKey, {String expectedApp = ''}) {
       final d = DateTime(int.parse(exp.substring(0, 4)),
           int.parse(exp.substring(4, 6)), int.parse(exp.substring(6, 8)));
       if (d.isBefore(DateTime.now())) {
-        return const LicenseResult(false, 'Key expired ${d.toIso8601String().substring(0, 10)}.');
+        return LicenseResult(false, 'Key expired ${d.toIso8601String().substring(0, 10)}.');
       }
     } catch (_) {
       return const LicenseResult(false, 'Tanggal exp tidak valid.');
