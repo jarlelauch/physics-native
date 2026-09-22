@@ -1,0 +1,13 @@
+.dart_tool/
+.build/
+build/
+.pub-cache/
+.pub/
+.idea/
+.vscode/
+*.iml
+*.log
+.DS_Store
+keys.json
+revoked.json
+.env
