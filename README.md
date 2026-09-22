@@ -10,10 +10,14 @@ flutter build apk --release --dart-define=NATIVE_SECRET="$env:NATIVE_MASTER_SECR
 # hasil: build/app/outputs/flutter-apk/app-release.apk
 
 ## Build via GitHub Actions (tanpa SDK lokal — RECOMMENDED)
-1. Push repo ini ke github.com/jarlelauch/physics-native
-2. Repo Settings → Secrets → Actions → New: NATIVE_SECRET = isi master secret
-3. Tiap push ke main / tiap Release → APK otomatis di Actions → download dari Artifacts / Releases.
-Workflow: .github/workflows/build-apk.yml
+1. Repo ini sudah live di github.com/jarlelauch/physics-native
+2. Tambahkan workflow via web (sekali saja, karena token CLI tanpa scope workflow):
+   repo → Add file → Create new file → path `.github/workflows/build-apk.yml` →
+   paste isi `ci/build-apk.yml` → Commit.
+   (Alternatif: `gh auth refresh -s workflow` di terminal kamu, lalu push folder `.github/`.)
+3. Repo Settings → Secrets and variables → Actions → New repository secret:
+   Name `NATIVE_SECRET`, isi = master secret (32+ char, SAMA dengan yang dipakai generate key).
+4. Tiap push ke main / tiap Release → APK otomatis di Actions → download dari Artifacts / Releases.
 
 ## Ganti konten dari vault
 python ../../release/prepare_vault_release.py --vault "C:/Users/realh/physics-native-vault" --app FIS --out "assets/content"
